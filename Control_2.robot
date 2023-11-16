@@ -31,7 +31,7 @@ Toral price
     [Arguments]    ${discount_price_1}    ${discount_price_2}
     [Documentation]    Keyword help to find out sum of price with discount
     ...
-    ...    Parameter:
+    ...    Parameters:
     ...
     ...    - *discount_price_1* - value of price for first product
     ...    - *discount_price_2* - value of price for second product
