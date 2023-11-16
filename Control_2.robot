@@ -18,7 +18,7 @@ Purchase
 *** Keywords ***
 Discount price
     [Arguments]    ${var}
-    [Documentation]    Keyword help to find out price with discount
+    [Documentation]    Keyword helps to find out price with discount
     ...
     ...    Parameter:
     ...    - *var* - value of price
@@ -29,7 +29,7 @@ Discount price
 
 Toral price
     [Arguments]    ${discount_price_1}    ${discount_price_2}
-    [Documentation]    Keyword help to find out sum of price with discount
+    [Documentation]    Keyword helps to find out sum of price with discount
     ...
     ...    Parameters:
     ...
@@ -41,7 +41,7 @@ Toral price
 
 Discount sum
     [Arguments]    ${total_price}
-    [Documentation]    Keyword help to find out discount sum
+    [Documentation]    Keyword helps to find out discount sum
     ...
     ...    Parameter:
     ...    - *total_price* - sum of price with discount
