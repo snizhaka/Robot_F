@@ -1,0 +1,32 @@
+*** Keywords ***
+Verify UI
+    ${failed}    Set variable    FAILED
+    [Return]    ${failed}
+
+Verify backend
+    ${passed}    set variable    PASSED
+    [Return]    ${passed}
+
+Edit Config
+    [Arguments]    ${parameter}
+    log    ${parameter}=${configurations}[${parameter}]
+
+Backup Configuration
+    Log    Store configuration file
+
+Restore Configuration
+    log    Restore configuration file
+
+Run
+    [Arguments]    ${command}
+    IF    '${command}' =='mkdir'
+        log    Directory was created
+    ELSE
+        log    Directories were deleted
+    END
+
+Login to Remote Host
+    Log    Login to host
+
+Exit From Remote Host
+    log    Exit from host

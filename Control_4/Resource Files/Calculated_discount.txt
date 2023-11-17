@@ -1,0 +1,54 @@
+*** Settings ***
+Library           BuiltIn
+Library           ../Libraries/mathematical_operations.py
+
+*** Variables ***
+${discount_1}     ${5}
+${discount_2}     ${0}
+${price_1}        ${100}
+${price_2}        ${50}
+
+*** Keywords ***
+Discount price
+    [Arguments]    ${var}
+    [Documentation]    _*Discount price* keyword help to find out price with discount_
+    ...
+    ...    Parameter:
+    ...    - *var* - value of price
+    ...
+    ...    Keyword returns value of *discount price*. It should be saved in variable.
+    ...    | Result | Keyword | Argument |
+    ...    | ${discount_price} | Discount price | ${price} |
+    ${discount}    Set Variable if    ${var} ==100    ${discount_1}    ${discount_2}
+    ${discount_price}    subtract    ${var}    ${discount}
+    Log to console    Discount price ${discount_price}
+    [Return]    ${discount_price}
+
+Toral price
+    [Arguments]    ${discount_price_1}    ${discount_price_2}
+    [Documentation]    _*Total price* keyword help to find out general price with discount_
+    ...
+    ...    Parameters:
+    ...    - *discount_price_1* - value of price for first product
+    ...    - *discount_price_2* - value of price for second product
+    ...
+    ...    Keyword returns value of *total price*. It should be saved in variable.
+    ...    | Result | Keyword | Argument_1 | Argument_2 |
+    ...    | ${total_price} | Total price | ${discount_price_1} | ${discount_price_2} |
+    ${total_price}    Add    ${discount_price_1}    ${discount_price_2}
+    Log to console    Total price ${total_price}
+    [Return]    ${total_price}
+
+Discount sum
+    [Arguments]    ${total_price}
+    [Documentation]    _*Discount sum* keyword help to find out general discount_
+    ...
+    ...    Parameter:
+    ...    - *total_price* - sum of price with discount
+    ...
+    ...    Keyword returns value of *discount sum*. It should be saved in variable.
+    ...    | Result | Keyword | Argument |
+    ...    | ${discount_sum} | Discount sum | ${total_price} |
+    ${total_sum}    add    ${price_1}    ${price_2}
+    ${discount_sum}    subtract    ${total_sum}    ${total_price}
+    log to console    Sum of discount ${discount_sum}
