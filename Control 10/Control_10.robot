@@ -17,7 +17,7 @@ Test 1
 
 Test 2
     Connect To Database    pymysql    ${DBname}    ${DBuser}    ${DBpass}    ${DBhost}    ${DBport}
-    Execute sql string    Delete from demo1;
+    Delete all rows from table    demo1
     Row Count Is 0    Select * from demo1;
     [Teardown]    Disconnect From Database
 
