@@ -4,7 +4,7 @@ Library           DatabaseLibrary
 *** Variables ***
 ${DBname}         demo_database
 ${DBuser}         root
-${DBpass}         Qwerty1@
+${DBpass}         1
 ${DBhost}         localhost
 ${DBport}         3306
 
