@@ -1,0 +1,7 @@
+[default]
+dbapiModuleName=pymysql
+dbName=demo_database
+dbUsername=root
+dbPassword=Qwerty1@
+dbHost=localhost
+dbPort=3306

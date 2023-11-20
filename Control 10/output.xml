@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on darwin)" generated="20231120 10:50:35.315" rpa="false" schemaversion="4">
+<suite id="s1" name="Control 10" source="/Users/schuiko/Robot_tests/Control 10/Control_10.robot">
+<test id="s1-t1" name="Test 1" line="12">
+<kw name="Connect To Database" library="DatabaseLibrary">
+<arg>dbConfigFile=dbconfig.txt</arg>
+<doc>Loads the DB API 2.0 module given `dbapiModuleName` then uses it to
+connect to the database using `dbName`, `dbUsername`, and `dbPassword`.</doc>
+<msg timestamp="20231120 10:50:35.351" level="INFO">Connecting using : pymysql.connect(db=demo_database, user=root, passwd=***, host=localhost, port=3306, charset=None) </msg>
+<status status="PASS" starttime="20231120 10:50:35.343" endtime="20231120 10:50:35.355"/>
+</kw>
+<kw name="Select age">
+<kw name="Query" library="DatabaseLibrary">
+<var>${result}</var>
+<arg>Select name, surname from demo1 where age &lt; 7;</arg>
+<doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
+input `sansTran` to True to run command without an explicit transaction commit or rollback.
+Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
+<msg timestamp="20231120 10:50:35.355" level="INFO">Executing : Query  |  Select name, surname from demo1 where age &lt; 7; </msg>
+<msg timestamp="20231120 10:50:35.356" level="INFO">${result} = (('Lion', 'Goodwin'),)</msg>
+<status status="PASS" starttime="20231120 10:50:35.355" endtime="20231120 10:50:35.356"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>people who yonger than 7 ${result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20231120 10:50:35.356" level="INFO">people who yonger than 7 (('Lion', 'Goodwin'),)</msg>
+<status status="PASS" starttime="20231120 10:50:35.356" endtime="20231120 10:50:35.356"/>
+</kw>
+<status status="PASS" starttime="20231120 10:50:35.355" endtime="20231120 10:50:35.356"/>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<arg>Select * from demo1 where salary = 0;</arg>
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<msg timestamp="20231120 10:50:35.356" level="INFO">Executing : Check If Not Exists In Database  |  Select * from demo1 where salary = 0;</msg>
+<msg timestamp="20231120 10:50:35.356" level="INFO">Executing : Query  |  Select * from demo1 where salary = 0; </msg>
+<msg timestamp="20231120 10:50:35.357" level="FAIL">Expected to have have no rows from 'Select * from demo1 where salary = 0;', but got some rows: ((4, 'Sergio', 'Trulle', 95, 0), (8, 'Violetta', 'White', 7, 0))</msg>
+<status status="FAIL" starttime="20231120 10:50:35.356" endtime="20231120 10:50:35.357"/>
+</kw>
+<kw name="Disconnect From Database" library="DatabaseLibrary" type="TEARDOWN">
+<doc>Disconnects from the database.
+By default it's not an error if there was no open database connection -
+suitable for usage as a teardown.
+However you can enforce it using the `error_if_no_connection` parameter.</doc>
+<msg timestamp="20231120 10:50:35.358" level="INFO">Executing : Disconnect From Database</msg>
+<status status="PASS" starttime="20231120 10:50:35.358" endtime="20231120 10:50:35.358"/>
+</kw>
+<status status="FAIL" starttime="20231120 10:50:35.343" endtime="20231120 10:50:35.358">Expected to have have no rows from 'Select * from demo1 where salary = 0;', but got some rows: ((4, 'Sergio', 'Trulle', 95, 0), (8, 'Violetta', 'White', 7, 0))</status>
+</test>
+<test id="s1-t2" name="Test 2" line="18">
+<kw name="Connect To Database" library="DatabaseLibrary">
+<arg>pymysql</arg>
+<arg>${DBname}</arg>
+<arg>${DBuser}</arg>
+<arg>${DBpass}</arg>
+<arg>${DBhost}</arg>
+<arg>${DBport}</arg>
+<doc>Loads the DB API 2.0 module given `dbapiModuleName` then uses it to
+connect to the database using `dbName`, `dbUsername`, and `dbPassword`.</doc>
+<msg timestamp="20231120 10:50:35.359" level="INFO">Connecting using : pymysql.connect(db=demo_database, user=root, passwd=***, host=localhost, port=3306, charset=None) </msg>
+<status status="PASS" starttime="20231120 10:50:35.358" endtime="20231120 10:50:35.360"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>Delete from demo1;</arg>
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to
+True to run command without an explicit transaction commit or rollback.</doc>
+<msg timestamp="20231120 10:50:35.360" level="INFO">Executing : Execute SQL String  |  Delete from demo1; </msg>
+<status status="PASS" starttime="20231120 10:50:35.360" endtime="20231120 10:50:35.361"/>
+</kw>
+<kw name="Row Count Is 0" library="DatabaseLibrary">
+<arg>Select * from demo1;</arg>
+<doc>Check if any rows are returned from the submitted `selectStatement`. If there are, then this will throw an
+AssertionError. Set optional input `sansTran` to True to run command without an explicit transaction commit or
+rollback. The default error message can be overridden with the `msg` argument.</doc>
+<msg timestamp="20231120 10:50:35.361" level="INFO">Executing : Row Count Is 0  |  selectStatement</msg>
+<msg timestamp="20231120 10:50:35.361" level="INFO">Executing : Row Count  |  Select * from demo1; </msg>
+<status status="PASS" starttime="20231120 10:50:35.361" endtime="20231120 10:50:35.362"/>
+</kw>
+<kw name="Disconnect From Database" library="DatabaseLibrary" type="TEARDOWN">
+<doc>Disconnects from the database.
+By default it's not an error if there was no open database connection -
+suitable for usage as a teardown.
+However you can enforce it using the `error_if_no_connection` parameter.</doc>
+<msg timestamp="20231120 10:50:35.362" level="INFO">Executing : Disconnect From Database</msg>
+<status status="PASS" starttime="20231120 10:50:35.362" endtime="20231120 10:50:35.362"/>
+</kw>
+<status status="PASS" starttime="20231120 10:50:35.358" endtime="20231120 10:50:35.362"/>
+</test>
+<test id="s1-t3" name="Test 3" line="24">
+<kw name="Connect To Database Using Custom Params" library="DatabaseLibrary">
+<arg>pymysql</arg>
+<arg>database='${DBname}', user='${DBuser}', password='${DBpass}', host='${DBhost}'</arg>
+<doc>Loads the DB API 2.0 module given `dbapiModuleName` then uses it to
+connect to the database using the map string `db_connect_string`
+(parsed as a list of named arguments).</doc>
+<msg timestamp="20231120 10:50:35.363" level="INFO">Executing : Connect To Database Using Custom Params : pymysql.connect(db_api_2.connect(database='demo_database', user='root', password=***, host='localhost')) </msg>
+<status status="PASS" starttime="20231120 10:50:35.362" endtime="20231120 10:50:35.364"/>
+</kw>
+<kw name="Insert data">
+<kw name="Execute Sql Script" library="DatabaseLibrary">
+<var>${result}</var>
+<arg>./data_for_demo1.sql</arg>
+<doc>Executes the content of the `sqlScriptFileName` as SQL commands. Useful for setting the database to a known
+state before running your tests, or clearing out your test data after running each a test. Set optional input
+`sansTran` to True to run command without an explicit transaction commit or rollback.</doc>
+<msg timestamp="20231120 10:50:35.364" level="INFO">Executing : Execute SQL Script  |  ./data_for_demo1.sql </msg>
+<msg timestamp="20231120 10:50:35.364" level="INFO">Executing statement from script file: INSERT INTO demo1 (id, name, surname, age, salary) VALUES (1, 'Jon', 'Do', 21, 10000)</msg>
+<msg timestamp="20231120 10:50:35.364" level="INFO">Executing statement from script file: INSERT INTO demo1 (id, name, surname, age, salary) VALUES (2, 'Ivan', 'Smith', 24, 12000)</msg>
+<msg timestamp="20231120 10:50:35.365" level="INFO">Executing statement from script file: INSERT INTO demo1 (id, name, surname, age, salary) VALUES (3, 'Marry', 'Popins', 17, 8000)</msg>
+<msg timestamp="20231120 10:50:35.365" level="INFO">Executing statement from script file: INSERT INTO demo1 (id, name, surname, age, salary) VALUES (4, 'Sergio', 'Trulle', 95, 0)</msg>
+<msg timestamp="20231120 10:50:35.365" level="INFO">Executing statement from script file: INSERT INTO demo1 (id, name, surname, age, salary) VALUES (5, 'Berta', 'Rassel', 34, 20000)</msg>
+<msg timestamp="20231120 10:50:35.365" level="INFO">Executing statement from script file: INSERT INTO demo1 (id, name, surname, age, salary) VALUES (6, 'Trune', 'Urroro', 45, 30000)</msg>
+<msg timestamp="20231120 10:50:35.365" level="INFO">Executing statement from script file: INSERT INTO demo1 (id, name, surname, age, salary) VALUES (7, 'Agneta', 'Bartovna', 60, 15000)</msg>
+<msg timestamp="20231120 10:50:35.365" level="INFO">Executing statement from script file: INSERT INTO demo1 (id, name, surname, age, salary) VALUES (8, 'Violetta', 'White', 7, 0)</msg>
+<msg timestamp="20231120 10:50:35.366" level="INFO">Executing statement from script file: INSERT INTO demo1 (id, name, surname, age, salary) VALUES (9, 'Lion', 'Goodwin', 2, 99999)</msg>
+<msg timestamp="20231120 10:50:35.366" level="INFO">Executing statement from script file: INSERT INTO demo1 (id, name, surname, age, salary) VALUES (10, 'Karetto', 'Jovanny', 50, 50000)</msg>
+<msg timestamp="20231120 10:50:35.366" level="INFO">${result} = None</msg>
+<status status="PASS" starttime="20231120 10:50:35.364" endtime="20231120 10:50:35.366"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20231120 10:50:35.367" level="INFO">None</msg>
+<status status="PASS" starttime="20231120 10:50:35.367" endtime="20231120 10:50:35.367"/>
+</kw>
+<status status="PASS" starttime="20231120 10:50:35.364" endtime="20231120 10:50:35.367"/>
+</kw>
+<kw name="Row Count Is Equal To X" library="DatabaseLibrary">
+<arg>Select * from demo1;</arg>
+<arg>10</arg>
+<doc>Check if the number of rows returned from `selectStatement` is equal to the value submitted. If not, then this
+will throw an AssertionError. Set optional input `sansTran` to True to run command without an explicit
+transaction commit or rollback. The default error message can be overridden with the `msg` argument.</doc>
+<msg timestamp="20231120 10:50:35.367" level="INFO">Executing : Row Count Is Equal To X  |  Select * from demo1;  |  10</msg>
+<msg timestamp="20231120 10:50:35.367" level="INFO">Executing : Row Count  |  Select * from demo1; </msg>
+<status status="PASS" starttime="20231120 10:50:35.367" endtime="20231120 10:50:35.367"/>
+</kw>
+<kw name="Disconnect From Database" library="DatabaseLibrary" type="TEARDOWN">
+<doc>Disconnects from the database.
+By default it's not an error if there was no open database connection -
+suitable for usage as a teardown.
+However you can enforce it using the `error_if_no_connection` parameter.</doc>
+<msg timestamp="20231120 10:50:35.368" level="INFO">Executing : Disconnect From Database</msg>
+<status status="PASS" starttime="20231120 10:50:35.368" endtime="20231120 10:50:35.368"/>
+</kw>
+<status status="PASS" starttime="20231120 10:50:35.362" endtime="20231120 10:50:35.368"/>
+</test>
+<status status="FAIL" starttime="20231120 10:50:35.316" endtime="20231120 10:50:35.368"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="1" skip="0" id="s1" name="Control 10">Control 10</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
