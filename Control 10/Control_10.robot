@@ -11,8 +11,8 @@ ${DBport}         3306
 *** Test Cases ***
 Test 1
     Connect to database    dbConfigFile=dbconfig.txt
-    Select age
-    Check if not Exists in database    Select * from demo1 where salary = 0;
+    ${result}    Select age
+    Should be empty    ${result}
     [Teardown]    Disconnect from database
 
 Test 2
@@ -33,5 +33,6 @@ Insert data
     Log    ${result}
 
 Select age
-    ${result}    Query    Select name, surname from demo1 where age < 7;
-    log    people who yonger than 7 ${result}
+    ${result}    Query    Select name, surname from demo1 where age < 7 and salary > 0;
+    log    ${result}
+    [Return]    ${result}
