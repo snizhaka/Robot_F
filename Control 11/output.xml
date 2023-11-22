@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on darwin)" generated="20231121 19:12:32.112" rpa="false" schemaversion="4">
+<suite id="s1" name="Control 11" source="/Users/schuiko/Robot_tests/Control 11/Control_11.robot">
+<test id="s1-t1" name="Get" line="8">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>httpbin</arg>
+<arg>https://httpbin.org</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231121 19:12:32.256" level="INFO">Creating Session using : alias=httpbin, url=https://httpbin.org, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231121 19:12:32.256" endtime="20231121 19:12:32.256"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${result}</var>
+<arg>httpbin</arg>
+<arg>/anything</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20231121 19:12:32.897" level="INFO">GET Request : url=https://httpbin.org/anything 
+ path_url=/anything 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20231121 19:12:32.897" level="INFO">GET Response : url=https://httpbin.org/anything 
+ status=200, reason=OK 
+ headers={'Date': 'Tue, 21 Nov 2023 17:12:33 GMT', 'Content-Type': 'application/json', 'Content-Length': '396', 'Connection': 'keep-alive', 'Server': 'gunicorn/19.9.0', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true'} 
+ body={
+  "args": {}, 
+  "data": "", 
+  "files": {}, 
+  "form": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Host": "httpbin.org", 
+    "User-Agent": "python-requests/2.31.0", 
+    "X-Amzn-Trace-Id": "Root=1-655ce501-5e7a7c05761ddd6311d3d822"
+  }, 
+  "json": null, 
+  "method": "GET", 
+  "origin": "95.135.152.132", 
+  "url": "https://httpbin.org/anything"
+}
+ 
+ </msg>
+<msg timestamp="20231121 19:12:32.898" level="INFO">/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/urllib3/connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'httpbin.org'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20231121 19:12:32.898" level="INFO">${result} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231121 19:12:32.256" endtime="20231121 19:12:32.898"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${result_str}</var>
+<arg>${result.json()}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20231121 19:12:32.899" level="INFO">${result_str} = {'args': {}, 'data': '', 'files': {}, 'form': {}, 'headers': {'Accept': '*/*', 'Accept-Encoding': 'gzip, deflate', 'Host': 'httpbin.org', 'User-Agent': 'python-requests/2.31.0', 'X-Amzn-Trace-Id': 'Ro...</msg>
+<status status="PASS" starttime="20231121 19:12:32.898" endtime="20231121 19:12:32.899"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${result_str}</arg>
+<arg>'json': None, 'method': 'GET'</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20231121 19:12:32.899" endtime="20231121 19:12:32.900"/>
+</kw>
+<kw name="Delete All Sessions" library="RequestsLibrary" type="TEARDOWN">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20231121 19:12:32.900" level="INFO">Deleting All Sessions</msg>
+<status status="PASS" starttime="20231121 19:12:32.900" endtime="20231121 19:12:32.900"/>
+</kw>
+<status status="PASS" starttime="20231121 19:12:32.256" endtime="20231121 19:12:32.900"/>
+</test>
+<test id="s1-t2" name="Get with params" line="14">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>httpbin</arg>
+<arg>https://httpbin.org</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231121 19:12:32.901" level="INFO">Creating Session using : alias=httpbin, url=https://httpbin.org, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231121 19:12:32.901" endtime="20231121 19:12:32.901"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${result}</var>
+<arg>httpbin</arg>
+<arg>/get</arg>
+<arg>params=param=text</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20231121 19:12:33.467" level="INFO">GET Request : url=https://httpbin.org/get?param=text 
+ path_url=/get?param=text 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20231121 19:12:33.467" level="INFO">GET Response : url=https://httpbin.org/get?param=text 
+ status=200, reason=OK 
+ headers={'Date': 'Tue, 21 Nov 2023 17:12:33 GMT', 'Content-Type': 'application/json', 'Content-Length': '342', 'Connection': 'keep-alive', 'Server': 'gunicorn/19.9.0', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true'} 
+ body={
+  "args": {
+    "param": "text"
+  }, 
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Host": "httpbin.org", 
+    "User-Agent": "python-requests/2.31.0", 
+    "X-Amzn-Trace-Id": "Root=1-655ce501-731ea12a779d3a081fc6f810"
+  }, 
+  "origin": "95.135.152.132", 
+  "url": "https://httpbin.org/get?param=text"
+}
+ 
+ </msg>
+<msg timestamp="20231121 19:12:33.467" level="INFO">/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/urllib3/connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'httpbin.org'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20231121 19:12:33.468" level="INFO">${result} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231121 19:12:32.901" endtime="20231121 19:12:33.468"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${result.text}</arg>
+<arg>"param1": "text"</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<msg timestamp="20231121 19:12:33.469" level="FAIL">'{
+  "args": {
+    "param": "text"
+  }, 
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Host": "httpbin.org", 
+    "User-Agent": "python-requests/2.31.0", 
+    "X-Amzn-Trace-Id": "Root=1-655ce501-731ea12a779d3a081fc6f810"
+  }, 
+  "origin": "95.135.152.132", 
+  "url": "https://httpbin.org/get?param=text"
+}
+' does not contain '"param1": "text"'</msg>
+<status status="FAIL" starttime="20231121 19:12:33.468" endtime="20231121 19:12:33.469"/>
+</kw>
+<kw name="Delete All Sessions" library="RequestsLibrary" type="TEARDOWN">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20231121 19:12:33.469" level="INFO">Deleting All Sessions</msg>
+<status status="PASS" starttime="20231121 19:12:33.469" endtime="20231121 19:12:33.470"/>
+</kw>
+<status status="FAIL" starttime="20231121 19:12:32.901" endtime="20231121 19:12:33.470">'{
+  "args": {
+    "param": "text"
+  }, 
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Host": "httpbin.org", 
+    "User-Agent": "python-requests/2.31.0", 
+    "X-Amzn-Trace-Id": "Root=1-655ce501-731ea12a779d3a081fc6f810"
+  }, 
+  "origin": "95.135.152.132", 
+  "url": "https://httpbin.org/get?param=text"
+}
+' does not contain '"param1": "text"'</status>
+</test>
+<test id="s1-t3" name="Get with headers" line="19">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>httpbin</arg>
+<arg>https://httpbin.org</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231121 19:12:33.470" level="INFO">Creating Session using : alias=httpbin, url=https://httpbin.org, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231121 19:12:33.470" endtime="20231121 19:12:33.471"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${list_headers}</var>
+<arg>Host</arg>
+<arg>Date</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231121 19:12:33.471" level="INFO">${list_headers} = ['Host', 'Date']</msg>
+<status status="PASS" starttime="20231121 19:12:33.471" endtime="20231121 19:12:33.471"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${result}</var>
+<arg>httpbin</arg>
+<arg>/anything</arg>
+<arg>params=headers=${list_headers}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20231121 19:12:34.106" level="INFO">GET Request : url=https://httpbin.org/anything?headers=['Host',%20'Date'] 
+ path_url=/anything?headers=['Host',%20'Date'] 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20231121 19:12:34.106" level="INFO">GET Response : url=https://httpbin.org/anything?headers=['Host',%20'Date'] 
+ status=200, reason=OK 
+ headers={'Date': 'Tue, 21 Nov 2023 17:12:34 GMT', 'Content-Type': 'application/json', 'Content-Length': '458', 'Connection': 'keep-alive', 'Server': 'gunicorn/19.9.0', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true'} 
+ body={
+  "args": {
+    "headers": "['Host', 'Date']"
+  }, 
+  "data": "", 
+  "files": {}, 
+  "form": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Host": "httpbin.org", 
+    "User-Agent": "python-requests/2.31.0", 
+    "X-Amzn-Trace-Id": "Root=1-655ce502-3c2c75ca015f93d35d53fa55"
+  }, 
+  "json": null, 
+  "method": "GET", 
+  "origin": "95.135.152.132", 
+  "url": "https://httpbin.org/anything?headers=['Host', 'Date']"
+}
+ 
+ </msg>
+<msg timestamp="20231121 19:12:34.106" level="INFO">/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/urllib3/connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'httpbin.org'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20231121 19:12:34.106" level="INFO">${result} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231121 19:12:33.471" endtime="20231121 19:12:34.106"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${content_type_value}</var>
+<arg>${result.headers}</arg>
+<arg>Content-Type</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20231121 19:12:34.107" level="INFO">${content_type_value} = application/json</msg>
+<status status="PASS" starttime="20231121 19:12:34.106" endtime="20231121 19:12:34.107"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${content_type_value}</arg>
+<arg>application/json</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20231121 19:12:34.107" endtime="20231121 19:12:34.108"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${headers_str}</var>
+<arg>${result.json()['args']}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20231121 19:12:34.109" level="INFO">${headers_str} = {'headers': "['Host', 'Date']"}</msg>
+<status status="PASS" starttime="20231121 19:12:34.108" endtime="20231121 19:12:34.109"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${headers_str}</arg>
+<arg>'${list_headers[0]}', '${list_headers[1]}'</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20231121 19:12:34.109" endtime="20231121 19:12:34.110"/>
+</kw>
+<kw name="Delete All Sessions" library="RequestsLibrary" type="TEARDOWN">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20231121 19:12:34.110" level="INFO">Deleting All Sessions</msg>
+<status status="PASS" starttime="20231121 19:12:34.110" endtime="20231121 19:12:34.110"/>
+</kw>
+<status status="PASS" starttime="20231121 19:12:33.470" endtime="20231121 19:12:34.110"/>
+</test>
+<test id="s1-t4" name="Get timeout" line="28">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>httpbin</arg>
+<arg>https://httpbin.org</arg>
+<arg>max_retries=0</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231121 19:12:34.112" level="INFO">Creating Session using : alias=httpbin, url=https://httpbin.org, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231121 19:12:34.111" endtime="20231121 19:12:34.112"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${result}</var>
+<arg>httpbin</arg>
+<arg>/delay/3</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20231121 19:12:34.215" level="FAIL">Test timeout 100 milliseconds exceeded.</msg>
+<status status="FAIL" starttime="20231121 19:12:34.112" endtime="20231121 19:12:34.215"/>
+</kw>
+<kw name="Run Keyword If Timeout Occurred" library="BuiltIn" type="TEARDOWN">
+<arg>Fail</arg>
+<arg>Timeout occurred, you should add more sec</arg>
+<doc>Runs the given keyword if either a test or a keyword timeout has occurred.</doc>
+<kw name="Fail" library="BuiltIn">
+<arg>Timeout occurred, you should add more sec</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<msg timestamp="20231121 19:12:34.216" level="FAIL">Timeout occurred, you should add more sec</msg>
+<status status="FAIL" starttime="20231121 19:12:34.216" endtime="20231121 19:12:34.216"/>
+</kw>
+<status status="FAIL" starttime="20231121 19:12:34.215" endtime="20231121 19:12:34.216">Timeout occurred, you should add more sec</status>
+</kw>
+<timeout value="100 milliseconds"/>
+<status status="FAIL" starttime="20231121 19:12:34.111" endtime="20231121 19:12:34.217">Test timeout 100 milliseconds exceeded.
+
+Also teardown failed:
+Timeout occurred, you should add more sec</status>
+</test>
+<test id="s1-t5" name="Delete" line="35">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>httpbin</arg>
+<arg>https://httpbin.org</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231121 19:12:34.218" level="INFO">Creating Session using : alias=httpbin, url=https://httpbin.org, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231121 19:12:34.217" endtime="20231121 19:12:34.218"/>
+</kw>
+<kw name="DELETE On Session" library="RequestsLibrary">
+<var>${result}</var>
+<arg>httpbin</arg>
+<arg>/delete</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20231121 19:12:34.796" level="INFO">DELETE Request : url=https://httpbin.org/delete 
+ path_url=/delete 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20231121 19:12:34.796" level="INFO">DELETE Response : url=https://httpbin.org/delete 
+ status=200, reason=OK 
+ headers={'Date': 'Tue, 21 Nov 2023 17:12:34 GMT', 'Content-Type': 'application/json', 'Content-Length': '402', 'Connection': 'keep-alive', 'Server': 'gunicorn/19.9.0', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true'} 
+ body={
+  "args": {}, 
+  "data": "", 
+  "files": {}, 
+  "form": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Content-Length": "0", 
+    "Host": "httpbin.org", 
+    "User-Agent": "python-requests/2.31.0", 
+    "X-Amzn-Trace-Id": "Root=1-655ce502-29cddce04cc485a73b900eb6"
+  }, 
+  "json": null, 
+  "origin": "95.135.152.132", 
+  "url": "https://httpbin.org/delete"
+}
+ 
+ </msg>
+<msg timestamp="20231121 19:12:34.798" level="INFO">/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/urllib3/connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'httpbin.org'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20231121 19:12:34.798" level="INFO">${result} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231121 19:12:34.218" endtime="20231121 19:12:34.798"/>
+</kw>
+<kw name="Delete All Sessions" library="RequestsLibrary" type="TEARDOWN">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20231121 19:12:34.798" level="INFO">Deleting All Sessions</msg>
+<status status="PASS" starttime="20231121 19:12:34.798" endtime="20231121 19:12:34.799"/>
+</kw>
+<status status="PASS" starttime="20231121 19:12:34.217" endtime="20231121 19:12:34.799"/>
+</test>
+<test id="s1-t6" name="Authorization" line="39">
+<kw name="Create List" library="BuiltIn">
+<var>${auth}</var>
+<arg>student</arg>
+<arg>111</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231121 19:12:34.799" level="INFO">${auth} = ['student', '111']</msg>
+<status status="PASS" starttime="20231121 19:12:34.799" endtime="20231121 19:12:34.799"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>httpbin</arg>
+<arg>https://httpbin.org</arg>
+<arg>auth=${auth}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231121 19:12:34.800" level="INFO">Creating Session using : alias=httpbin, url=https://httpbin.org, headers={},                     cookies={}, auth=&lt;requests.auth.HTTPBasicAuth object at 0x104b031a0&gt;, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231121 19:12:34.800" endtime="20231121 19:12:34.800"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${result}</var>
+<arg>httpbin</arg>
+<arg>/basic-auth/student/111</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20231121 19:12:35.378" level="INFO">GET Request : url=https://httpbin.org/basic-auth/student/111 
+ path_url=/basic-auth/student/111 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Basic c3R1ZGVudDoxMTE='} 
+ body=None 
+ </msg>
+<msg timestamp="20231121 19:12:35.378" level="INFO">GET Response : url=https://httpbin.org/basic-auth/student/111 
+ status=200, reason=OK 
+ headers={'Date': 'Tue, 21 Nov 2023 17:12:35 GMT', 'Content-Type': 'application/json', 'Content-Length': '50', 'Connection': 'keep-alive', 'Server': 'gunicorn/19.9.0', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true'} 
+ body={
+  "authenticated": true, 
+  "user": "student"
+}
+ 
+ </msg>
+<msg timestamp="20231121 19:12:35.378" level="INFO">/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/urllib3/connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'httpbin.org'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20231121 19:12:35.378" level="INFO">${result} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231121 19:12:34.800" endtime="20231121 19:12:35.378"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${authenticated}</var>
+<arg>${result.json()}</arg>
+<arg>authenticated</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20231121 19:12:35.379" level="INFO">${authenticated} = True</msg>
+<status status="PASS" starttime="20231121 19:12:35.379" endtime="20231121 19:12:35.379"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${user}</var>
+<arg>${result.json()}</arg>
+<arg>user</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20231121 19:12:35.380" level="INFO">${user} = student</msg>
+<status status="PASS" starttime="20231121 19:12:35.380" endtime="20231121 19:12:35.380"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${authenticated}</arg>
+<arg>${True}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20231121 19:12:35.381" endtime="20231121 19:12:35.381"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${user}</arg>
+<arg>${auth[0]}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20231121 19:12:35.381" endtime="20231121 19:12:35.382"/>
+</kw>
+<kw name="Delete All Sessions" library="RequestsLibrary" type="TEARDOWN">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20231121 19:12:35.382" level="INFO">Deleting All Sessions</msg>
+<status status="PASS" starttime="20231121 19:12:35.382" endtime="20231121 19:12:35.382"/>
+</kw>
+<status status="PASS" starttime="20231121 19:12:34.799" endtime="20231121 19:12:35.382"/>
+</test>
+<test id="s1-t7" name="Post" line="48">
+<kw name="Set Variable" library="BuiltIn">
+<var>${params}</var>
+<arg>{"user": "schuiko", "day": "wednesday"}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231121 19:12:35.383" level="INFO">${params} = {"user": "schuiko", "day": "wednesday"}</msg>
+<status status="PASS" starttime="20231121 19:12:35.383" endtime="20231121 19:12:35.383"/>
+</kw>
+<kw name="Convert String To Json" library="JSONLibrary">
+<var>${params_json}</var>
+<arg>${params}</arg>
+<doc>Convert String to JSON object</doc>
+<msg timestamp="20231121 19:12:35.383" level="INFO">${params_json} = {'user': 'schuiko', 'day': 'wednesday'}</msg>
+<status status="PASS" starttime="20231121 19:12:35.383" endtime="20231121 19:12:35.384"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>httpbin</arg>
+<arg>https://httpbin.org</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20231121 19:12:35.384" level="INFO">Creating Session using : alias=httpbin, url=https://httpbin.org, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20231121 19:12:35.384" endtime="20231121 19:12:35.384"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${result}</var>
+<arg>httpbin</arg>
+<arg>/post</arg>
+<arg>json=${params_json}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20231121 19:12:35.945" level="INFO">POST Request : url=https://httpbin.org/post 
+ path_url=/post 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '39', 'Content-Type': 'application/json'} 
+ body=b'{"user": "schuiko", "day": "wednesday"}' 
+ </msg>
+<msg timestamp="20231121 19:12:35.945" level="INFO">POST Response : url=https://httpbin.org/post 
+ status=200, reason=OK 
+ headers={'Date': 'Tue, 21 Nov 2023 17:12:36 GMT', 'Content-Type': 'application/json', 'Content-Length': '537', 'Connection': 'keep-alive', 'Server': 'gunicorn/19.9.0', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true'} 
+ body={
+  "args": {}, 
+  "data": "{\"user\": \"schuiko\", \"day\": \"wednesday\"}", 
+  "files": {}, 
+  "form": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Content-Length": "39", 
+    "Content-Type": "application/json", 
+    "Host": "httpbin.org", 
+    "User-Agent": "python-requests/2.31.0", 
+    "X-Amzn-Trace-Id": "Root=1-655ce504-644ea7cf1b625b435aedbc2b"
+  }, 
+  "json": {
+    "day": "wednesday", 
+    "user": "schuiko"
+  }, 
+  "origin": "95.135.152.132", 
+  "url": "https://httpbin.org/post"
+}
+ 
+ </msg>
+<msg timestamp="20231121 19:12:35.945" level="INFO">/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/urllib3/connectionpool.py:1099: InsecureRequestWarning: Unverified HTTPS request is being made to host 'httpbin.org'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20231121 19:12:35.945" level="INFO">${result} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20231121 19:12:35.384" endtime="20231121 19:12:35.945"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${result.json()['json']}</arg>
+<arg>${params_json}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20231121 19:12:35.946" endtime="20231121 19:12:35.947"/>
+</kw>
+<kw name="Delete All Sessions" library="RequestsLibrary" type="TEARDOWN">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20231121 19:12:35.947" level="INFO">Deleting All Sessions</msg>
+<status status="PASS" starttime="20231121 19:12:35.947" endtime="20231121 19:12:35.947"/>
+</kw>
+<status status="PASS" starttime="20231121 19:12:35.383" endtime="20231121 19:12:35.947"/>
+</test>
+<status status="FAIL" starttime="20231121 19:12:32.114" endtime="20231121 19:12:35.948"/>
+</suite>
+<statistics>
+<total>
+<stat pass="5" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="5" fail="2" skip="0" id="s1" name="Control 11">Control 11</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
