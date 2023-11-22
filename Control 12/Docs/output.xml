@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on darwin)" generated="20231122 17:22:11.550" rpa="false" schemaversion="4">
+<suite id="s1" name="Control 12 &amp; Control 12 class">
+<suite id="s1-s1" name="Control 12" source="/Users/schuiko/Robot_tests/Control 12/Tests/Control_12.robot">
+<test id="s1-s1-t1" name="Use own library" line="8">
+<kw name="Set Variable" library="BuiltIn">
+<var>${path_directory}</var>
+<arg>/Users/schuiko/Robot_tests/Control 12</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231122 17:22:11.572" level="INFO">${path_directory} = /Users/schuiko/Robot_tests/Control 12</msg>
+<status status="PASS" starttime="20231122 17:22:11.572" endtime="20231122 17:22:11.572"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${path_file}</var>
+<arg>/Users/schuiko/Robot_tests/Control 12/mathematical_operations.py</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231122 17:22:11.572" level="INFO">${path_file} = /Users/schuiko/Robot_tests/Control 12/mathematical_operations.py</msg>
+<status status="PASS" starttime="20231122 17:22:11.572" endtime="20231122 17:22:11.572"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${file_name}</var>
+<arg>mathematical_operations.py</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231122 17:22:11.573" level="INFO">${file_name} = mathematical_operations.py</msg>
+<status status="PASS" starttime="20231122 17:22:11.572" endtime="20231122 17:22:11.573"/>
+</kw>
+<kw name="Content of directory" library="MyLibrary">
+<var>${content_of_directory}</var>
+<arg>${path_directory}</arg>
+<doc>The keyword helps you see the contents of the neded directory.</doc>
+<msg timestamp="20231122 17:22:11.573" level="DEBUG">banana_reading</msg>
+<msg timestamp="20231122 17:22:11.573" level="INFO">List of files and directories ['.DS_Store', 'mathematical_operations.py', 'Tests', 'Libraries', 'Docs', 'md5_expected.txt']</msg>
+<msg timestamp="20231122 17:22:11.573" level="INFO">${content_of_directory} = ['.DS_Store', 'mathematical_operations.py', 'Tests', 'Libraries', 'Docs', 'md5_expected.txt']</msg>
+<status status="PASS" starttime="20231122 17:22:11.573" endtime="20231122 17:22:11.573"/>
+</kw>
+<kw name="File exists" library="MyLibrary">
+<var>${exists}</var>
+<arg>${content_of_directory}</arg>
+<arg>${file_name}</arg>
+<doc>The keyword helps you see if the file you specified exists</doc>
+<msg timestamp="20231122 17:22:11.574" level="DEBUG">banana_checking</msg>
+<msg timestamp="20231122 17:22:11.574" level="INFO">File exist</msg>
+<msg timestamp="20231122 17:22:11.574" level="INFO">${exists} = True</msg>
+<status status="PASS" starttime="20231122 17:22:11.573" endtime="20231122 17:22:11.574"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${exists}</arg>
+<arg>${True}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<msg timestamp="20231122 17:22:11.574" level="DEBUG">Argument types are:
+&lt;class 'bool'&gt;
+&lt;class 'bool'&gt;</msg>
+<status status="PASS" starttime="20231122 17:22:11.574" endtime="20231122 17:22:11.574"/>
+</kw>
+<kw name="Calculate ${path_file} md5" library="MyLibrary" sourcename="Calculate ${file_path} md5">
+<var>${actual_md5}</var>
+<doc>The keyword helps you calculate md5 hash for file</doc>
+<msg timestamp="20231122 17:22:11.574" level="DEBUG">banana_calculating</msg>
+<msg timestamp="20231122 17:22:11.574" level="INFO">MD5 for file is  99ca34cb63951b0c4c8a44eb331b048b</msg>
+<msg timestamp="20231122 17:22:11.574" level="INFO">${actual_md5} = 99ca34cb63951b0c4c8a44eb331b048b</msg>
+<status status="PASS" starttime="20231122 17:22:11.574" endtime="20231122 17:22:11.574"/>
+</kw>
+<kw name="Compare" library="MyLibrary">
+<var>${same}</var>
+<arg>${actual_md5}</arg>
+<arg>${expected_md5}</arg>
+<doc>The keyword helps you compare md5 hashes for file</doc>
+<msg timestamp="20231122 17:22:11.575" level="DEBUG">banana_comparing</msg>
+<msg timestamp="20231122 17:22:11.575" level="INFO">md5 hashes are the same</msg>
+<msg timestamp="20231122 17:22:11.575" level="INFO">${same} = True</msg>
+<status status="PASS" starttime="20231122 17:22:11.575" endtime="20231122 17:22:11.575"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${same}</arg>
+<arg>${True}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<msg timestamp="20231122 17:22:11.575" level="DEBUG">Argument types are:
+&lt;class 'bool'&gt;
+&lt;class 'bool'&gt;</msg>
+<status status="PASS" starttime="20231122 17:22:11.575" endtime="20231122 17:22:11.575"/>
+</kw>
+<status status="PASS" starttime="20231122 17:22:11.572" endtime="20231122 17:22:11.575"/>
+</test>
+<status status="PASS" starttime="20231122 17:22:11.569" endtime="20231122 17:22:11.576"/>
+</suite>
+<suite id="s1-s2" name="Control 12 class" source="/Users/schuiko/Robot_tests/Control 12/Tests/Control_12_class.robot">
+<test id="s1-s2-t1" name="Use own library" line="8">
+<kw name="Set Variable" library="BuiltIn">
+<var>${path_directory}</var>
+<arg>/Users/schuiko/Robot_tests/Control 12</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231122 17:22:11.579" level="INFO">${path_directory} = /Users/schuiko/Robot_tests/Control 12</msg>
+<status status="PASS" starttime="20231122 17:22:11.579" endtime="20231122 17:22:11.579"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${file_name}</var>
+<arg>mathematical_operations.py</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231122 17:22:11.580" level="INFO">${file_name} = mathematical_operations.py</msg>
+<status status="PASS" starttime="20231122 17:22:11.580" endtime="20231122 17:22:11.580"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${path_file}</var>
+<arg>/Users/schuiko/Robot_tests/Control 12/mathematical_operations.py</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231122 17:22:11.580" level="INFO">${path_file} = /Users/schuiko/Robot_tests/Control 12/mathematical_operations.py</msg>
+<status status="PASS" starttime="20231122 17:22:11.580" endtime="20231122 17:22:11.580"/>
+</kw>
+<kw name="Content of directory" library="MyLibrary_class">
+<var>${content_of_directory}</var>
+<arg>${path_directory}</arg>
+<doc>The keyword helps you see the contents of the neded directory.</doc>
+<msg timestamp="20231122 17:22:11.580" level="DEBUG">banana_reading</msg>
+<msg timestamp="20231122 17:22:11.580" level="INFO">List of files and directories ['.DS_Store', 'mathematical_operations.py', 'Tests', 'Libraries', 'Docs', 'md5_expected.txt']</msg>
+<msg timestamp="20231122 17:22:11.580" level="INFO">${content_of_directory} = ['.DS_Store', 'mathematical_operations.py', 'Tests', 'Libraries', 'Docs', 'md5_expected.txt']</msg>
+<status status="PASS" starttime="20231122 17:22:11.580" endtime="20231122 17:22:11.580"/>
+</kw>
+<kw name="File exists" library="MyLibrary_class">
+<var>${exists}</var>
+<arg>${content_of_directory}</arg>
+<arg>${file_name}</arg>
+<doc>The keyword helps you see if the file you specified exists</doc>
+<msg timestamp="20231122 17:22:11.581" level="DEBUG">banana_checking</msg>
+<msg timestamp="20231122 17:22:11.581" level="INFO">File exist</msg>
+<msg timestamp="20231122 17:22:11.581" level="INFO">${exists} = True</msg>
+<status status="PASS" starttime="20231122 17:22:11.581" endtime="20231122 17:22:11.581"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${exists}</arg>
+<arg>${True}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<msg timestamp="20231122 17:22:11.581" level="DEBUG">Argument types are:
+&lt;class 'bool'&gt;
+&lt;class 'bool'&gt;</msg>
+<status status="PASS" starttime="20231122 17:22:11.581" endtime="20231122 17:22:11.581"/>
+</kw>
+<kw name="Calculate ${path_file} md5" library="MyLibrary_class" sourcename="Calculate ${file_path} md5">
+<var>${actual_md5}</var>
+<doc>The keyword helps you calculate md5 hash for file</doc>
+<msg timestamp="20231122 17:22:11.582" level="DEBUG">banana_calculating</msg>
+<msg timestamp="20231122 17:22:11.582" level="INFO">MD5 for file is  99ca34cb63951b0c4c8a44eb331b048b</msg>
+<msg timestamp="20231122 17:22:11.582" level="INFO">${actual_md5} = 99ca34cb63951b0c4c8a44eb331b048b</msg>
+<status status="PASS" starttime="20231122 17:22:11.581" endtime="20231122 17:22:11.582"/>
+</kw>
+<kw name="Compare" library="MyLibrary_class">
+<var>${same}</var>
+<arg>${actual_md5}</arg>
+<arg>${expected_md5}</arg>
+<doc>The keyword helps you compare md5 hashes for file</doc>
+<msg timestamp="20231122 17:22:11.582" level="DEBUG">banana_comparing</msg>
+<msg timestamp="20231122 17:22:11.582" level="INFO">md5 hashes are the same</msg>
+<msg timestamp="20231122 17:22:11.582" level="INFO">${same} = True</msg>
+<status status="PASS" starttime="20231122 17:22:11.582" endtime="20231122 17:22:11.582"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${same}</arg>
+<arg>${True}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<msg timestamp="20231122 17:22:11.583" level="DEBUG">Argument types are:
+&lt;class 'bool'&gt;
+&lt;class 'bool'&gt;</msg>
+<status status="PASS" starttime="20231122 17:22:11.582" endtime="20231122 17:22:11.583"/>
+</kw>
+<status status="PASS" starttime="20231122 17:22:11.579" endtime="20231122 17:22:11.583"/>
+</test>
+<status status="PASS" starttime="20231122 17:22:11.576" endtime="20231122 17:22:11.583"/>
+</suite>
+<status status="PASS" starttime="20231122 17:22:11.551" endtime="20231122 17:22:11.584"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="0" skip="0" id="s1" name="Control 12 &amp; Control 12 class">Control 12 &amp; Control 12 class</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Control 12">Control 12 &amp; Control 12 class.Control 12</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s2" name="Control 12 class">Control 12 &amp; Control 12 class.Control 12 class</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
