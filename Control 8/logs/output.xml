@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on darwin)" generated="20231123 11:36:50.151" rpa="false" schemaversion="4">
+<suite id="s1" name="Control 8" source="/Users/schuiko/Robot_tests/Control 8/Control_8.robot">
+<test id="s1-t1" name="Connection to remote host" line="16">
+<kw name="Open Connection" library="SSHLibrary">
+<var>${connection_id_1}</var>
+<arg>${host}</arg>
+<arg>port=${port}</arg>
+<arg>alias=connection_1</arg>
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<msg timestamp="20231123 11:36:50.250" level="INFO">${connection_id_1} = 1</msg>
+<status status="PASS" starttime="20231123 11:36:50.250" endtime="20231123 11:36:50.251"/>
+</kw>
+<kw name="Get Connection" library="SSHLibrary">
+<var>${connection_info}</var>
+<doc>Returns information about the connection.</doc>
+<msg timestamp="20231123 11:36:50.251" level="INFO">index=1
+host=localhost
+alias=connection_1
+port=2222
+timeout=3 seconds
+newline=
+
+prompt=None
+term_type=vt100
+width=80
+height=24
+path_separator=/
+encoding=UTF-8
+escape_ansi=False
+encoding_errors=strict</msg>
+<msg timestamp="20231123 11:36:50.251" level="INFO">${connection_info} = index=1
+host=localhost
+alias=connection_1
+port=2222
+timeout=3 seconds
+newline=
+
+prompt=None
+term_type=vt100
+width=80
+height=24
+path_separator=/
+encoding=UTF-8
+escape_ansi=False
+encoding_errors=strict</msg>
+<status status="PASS" starttime="20231123 11:36:50.251" endtime="20231123 11:36:50.251"/>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<var>${hello}</var>
+<arg>${user}</arg>
+<arg>${password}</arg>
+<arg>delay=1s</arg>
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<msg timestamp="20231123 11:36:50.251" level="INFO">Logging into 'localhost:2222' as 'root'.</msg>
+<msg timestamp="20231123 11:36:52.281" level="INFO">Read output: Welcome to Alpine!
+
+The Alpine Wiki contains a large amount of how-to guides and general
+information about administrating Alpine systems.
+See &lt;http://wiki.alpinelinux.org&gt;.
+
+You can setup the system with the command: setup-alpine
+
+You may change this message by editing /etc/motd.
+
+f7cf0e9491d5:~# [6n</msg>
+<msg timestamp="20231123 11:36:52.282" level="INFO">${hello} = Welcome to Alpine!
+
+The Alpine Wiki contains a large amount of how-to guides and general
+information about administrating Alpine systems.
+See &lt;http://wiki.alpinelinux.org&gt;.
+
+You can setup the sy...</msg>
+<status status="PASS" starttime="20231123 11:36:50.251" endtime="20231123 11:36:52.282"/>
+</kw>
+<kw name="Start Command" library="SSHLibrary">
+<arg>cd ${tmp}</arg>
+<doc>Starts execution of the ``command`` on the remote machine and returns immediately.</doc>
+<msg timestamp="20231123 11:36:52.282" level="INFO">Starting command 'cd /tmp'.</msg>
+<status status="PASS" starttime="20231123 11:36:52.282" endtime="20231123 11:36:52.284"/>
+</kw>
+<kw name="Start Command" library="SSHLibrary">
+<arg>echo This is a text file &gt; \ ${destination_to_file}</arg>
+<doc>Starts execution of the ``command`` on the remote machine and returns immediately.</doc>
+<msg timestamp="20231123 11:36:52.284" level="INFO">Starting command 'echo This is a text file &gt;  /tmp/demo.txt'.</msg>
+<status status="PASS" starttime="20231123 11:36:52.284" endtime="20231123 11:36:52.286"/>
+</kw>
+<kw name="List Directory" library="SSHLibrary">
+<var>${directory_content}</var>
+<arg>${tmp}</arg>
+<doc>Returns and logs items in the remote ``path``, optionally filtered with ``pattern``.</doc>
+<msg timestamp="20231123 11:36:52.288" level="INFO">[chan 3] Opened sftp connection (server version 3)</msg>
+<msg timestamp="20231123 11:36:52.293" level="INFO">1 item:
+demo.txt</msg>
+<msg timestamp="20231123 11:36:52.293" level="INFO">${directory_content} = ['demo.txt']</msg>
+<status status="PASS" starttime="20231123 11:36:52.286" endtime="20231123 11:36:52.293"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${directory_content}</arg>
+<arg>${file_name}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20231123 11:36:52.294" endtime="20231123 11:36:52.294"/>
+</kw>
+<kw name="Get File" library="SSHLibrary">
+<arg>${destination_to_file}</arg>
+<arg>${destination_for_copy}</arg>
+<doc>Downloads file(s) from the remote machine to the local machine.</doc>
+<msg timestamp="20231123 11:36:52.299" level="INFO">'/tmp/demo.txt' -&gt; '/Users/schuiko/demo.txt'</msg>
+<status status="PASS" starttime="20231123 11:36:52.294" endtime="20231123 11:36:52.299"/>
+</kw>
+<kw name="Open Connection" library="SSHLibrary">
+<var>${connection_id_2}</var>
+<arg>${host}</arg>
+<arg>port=${port}</arg>
+<arg>alias=connection_2</arg>
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<msg timestamp="20231123 11:36:52.300" level="INFO">${connection_id_2} = 2</msg>
+<status status="PASS" starttime="20231123 11:36:52.299" endtime="20231123 11:36:52.300"/>
+</kw>
+<kw name="Get Connection" library="SSHLibrary">
+<var>${connection_info_2}</var>
+<doc>Returns information about the connection.</doc>
+<msg timestamp="20231123 11:36:52.300" level="INFO">index=2
+host=localhost
+alias=connection_2
+port=2222
+timeout=3 seconds
+newline=
+
+prompt=None
+term_type=vt100
+width=80
+height=24
+path_separator=/
+encoding=UTF-8
+escape_ansi=False
+encoding_errors=strict</msg>
+<msg timestamp="20231123 11:36:52.300" level="INFO">${connection_info_2} = index=2
+host=localhost
+alias=connection_2
+port=2222
+timeout=3 seconds
+newline=
+
+prompt=None
+term_type=vt100
+width=80
+height=24
+path_separator=/
+encoding=UTF-8
+escape_ansi=False
+encoding_errors=strict</msg>
+<status status="PASS" starttime="20231123 11:36:52.300" endtime="20231123 11:36:52.300"/>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<var>${stdout_2}</var>
+<arg>${user}</arg>
+<arg>${password}</arg>
+<arg>delay=1s</arg>
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<msg timestamp="20231123 11:36:52.300" level="INFO">Logging into 'localhost:2222' as 'root'.</msg>
+<msg timestamp="20231123 11:36:54.330" level="INFO">Read output: Welcome to Alpine!
+
+The Alpine Wiki contains a large amount of how-to guides and general
+information about administrating Alpine systems.
+See &lt;http://wiki.alpinelinux.org&gt;.
+
+You can setup the system with the command: setup-alpine
+
+You may change this message by editing /etc/motd.
+
+f7cf0e9491d5:~# [6n</msg>
+<msg timestamp="20231123 11:36:54.330" level="INFO">${stdout_2} = Welcome to Alpine!
+
+The Alpine Wiki contains a large amount of how-to guides and general
+information about administrating Alpine systems.
+See &lt;http://wiki.alpinelinux.org&gt;.
+
+You can setup the sy...</msg>
+<status status="PASS" starttime="20231123 11:36:52.300" endtime="20231123 11:36:54.330"/>
+</kw>
+<kw name="Write" library="SSHLibrary">
+<arg>cat ${destination_to_file}</arg>
+<doc>Writes the given ``text`` on the remote machine and appends a newline.</doc>
+<msg timestamp="20231123 11:36:54.332" level="INFO">cat /tmp/demo.txt</msg>
+<status status="PASS" starttime="20231123 11:36:54.330" endtime="20231123 11:36:54.332"/>
+</kw>
+<kw name="Read Until" library="SSHLibrary">
+<var>${result_of_reading}</var>
+<arg>${text}</arg>
+<doc>Consumes and returns the server output until ``expected`` is encountered.</doc>
+<msg timestamp="20231123 11:36:54.353" level="INFO">This is a text</msg>
+<msg timestamp="20231123 11:36:54.353" level="INFO">${result_of_reading} = This is a text</msg>
+<status status="PASS" starttime="20231123 11:36:54.332" endtime="20231123 11:36:54.353"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${result_of_reading}</arg>
+<arg>This is a text</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20231123 11:36:54.353" endtime="20231123 11:36:54.353"/>
+</kw>
+<kw name="Switch Connection" library="SSHLibrary">
+<arg>connection_1</arg>
+<doc>Switches the active connection by index or alias.</doc>
+<status status="PASS" starttime="20231123 11:36:54.353" endtime="20231123 11:36:54.353"/>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<arg>rm ${destination_to_file}</arg>
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<msg timestamp="20231123 11:36:54.354" level="INFO">Executing command 'rm /tmp/demo.txt'.</msg>
+<msg timestamp="20231123 11:36:54.366" level="INFO">Command exited with return code 0.</msg>
+<status status="PASS" starttime="20231123 11:36:54.354" endtime="20231123 11:36:54.366"/>
+</kw>
+<kw name="Switch Connection" library="SSHLibrary">
+<arg>connection_2</arg>
+<doc>Switches the active connection by index or alias.</doc>
+<status status="PASS" starttime="20231123 11:36:54.366" endtime="20231123 11:36:54.366"/>
+</kw>
+<kw name="File Should Not Exist" library="SSHLibrary">
+<arg>${destination_to_file}</arg>
+<doc>Fails if the given ``path`` points to an existing file.</doc>
+<msg timestamp="20231123 11:36:54.369" level="INFO">[chan 1] Opened sftp connection (server version 3)</msg>
+<status status="PASS" starttime="20231123 11:36:54.366" endtime="20231123 11:36:54.370"/>
+</kw>
+<kw name="Close All Connections" library="SSHLibrary" type="TEARDOWN">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20231123 11:36:54.371" endtime="20231123 11:36:54.371"/>
+</kw>
+<status status="PASS" starttime="20231123 11:36:50.250" endtime="20231123 11:36:54.371"/>
+</test>
+<status status="PASS" starttime="20231123 11:36:50.153" endtime="20231123 11:36:54.372"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Control 8">Control 8</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
