@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.0 on darwin)" generated="20231123 05:30:26.386" rpa="false" schemaversion="4">
+<suite id="s1" name="Control 9" source="/Users/schuiko/Robot_tests/Control 9/Control_9.robot">
+<test id="s1-t1" name="Work with browser" line="5">
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<arg>0.5</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" starttime="20231123 05:30:26.534" endtime="20231123 05:30:26.534"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>http://commentssprintone.azurewebsites.net</arg>
+<arg>Firefox</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20231123 05:30:26.535" level="INFO">Opening browser 'Firefox' to base url 'http://commentssprintone.azurewebsites.net'.</msg>
+<status status="PASS" starttime="20231123 05:30:26.534" endtime="20231123 05:30:31.469"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>Index</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20231123 05:30:31.975" level="INFO">Page title is 'Index'.</msg>
+<status status="PASS" starttime="20231123 05:30:31.469" endtime="20231123 05:30:31.975"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//*[@id="command-navigation"]/input[2]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231123 05:30:31.976" level="INFO">Clicking element '//*[@id="command-navigation"]/input[2]'.</msg>
+<status status="PASS" starttime="20231123 05:30:31.975" endtime="20231123 05:30:33.062"/>
+</kw>
+<kw name="Alert Should Be Present" library="SeleniumLibrary">
+<arg>Please, select one category</arg>
+<doc>Verifies that an alert is present and by default, accepts it.</doc>
+<msg timestamp="20231123 05:30:33.063" level="INFO">HANDLE::&lt;class 'NoneType'&gt;::None</msg>
+<status status="PASS" starttime="20231123 05:30:33.063" endtime="20231123 05:30:34.588"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//*[@id="SelectedCateg"]/option[5]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231123 05:30:34.589" level="INFO">Clicking element '//*[@id="SelectedCateg"]/option[5]'.</msg>
+<status status="PASS" starttime="20231123 05:30:34.588" endtime="20231123 05:30:35.833"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>id:applybutton</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231123 05:30:35.834" level="INFO">Clicking button 'id:applybutton'.</msg>
+<status status="PASS" starttime="20231123 05:30:35.833" endtime="20231123 05:30:37.824"/>
+</kw>
+<kw name="Table Cell Should Contain" library="SeleniumLibrary">
+<arg>//*[@id="main"]/div/div[5]/form/table</arg>
+<arg>2</arg>
+<arg>2</arg>
+<arg>4</arg>
+<doc>Verifies table cell contains text ``expected``.</doc>
+<msg timestamp="20231123 05:30:40.872" level="INFO">Table cell contains '4'.</msg>
+<status status="PASS" starttime="20231123 05:30:37.825" endtime="20231123 05:30:40.873"/>
+</kw>
+<kw name="Select Checkbox" library="SeleniumLibrary">
+<arg>//*[@id="main"]/div/div[5]/form/table/tbody/tr[1]/td[1]/input[1]</arg>
+<doc>Selects the checkbox identified by ``locator``.</doc>
+<msg timestamp="20231123 05:30:40.874" level="INFO">Selecting checkbox '//*[@id="main"]/div/div[5]/form/table/tbody/tr[1]/td[1]/input[1]'.</msg>
+<status status="PASS" starttime="20231123 05:30:40.873" endtime="20231123 05:30:43.624"/>
+</kw>
+<kw name="Checkbox Should Be Selected" library="SeleniumLibrary">
+<arg>//*[@id="main"]/div/div[5]/form/table/tbody/tr[1]/td[1]/input[1]</arg>
+<doc>Verifies checkbox ``locator`` is selected/checked.</doc>
+<msg timestamp="20231123 05:30:43.625" level="INFO">Verifying checkbox '//*[@id="main"]/div/div[5]/form/table/tbody/tr[1]/td[1]/input[1]' is selected.</msg>
+<status status="PASS" starttime="20231123 05:30:43.624" endtime="20231123 05:30:45.653"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//*[@id="command-navigation"]/input[2]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231123 05:30:45.654" level="INFO">Clicking element '//*[@id="command-navigation"]/input[2]'.</msg>
+<status status="PASS" starttime="20231123 05:30:45.653" endtime="20231123 05:30:46.815"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id:Text</arg>
+<arg>My new comment from RF</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231123 05:30:46.816" level="INFO">Typing text 'My new comment from RF' into text field 'id:Text'.</msg>
+<status status="PASS" starttime="20231123 05:30:46.815" endtime="20231123 05:30:48.363"/>
+</kw>
+<kw name="Unselect Checkbox" library="SeleniumLibrary">
+<arg>id:Active</arg>
+<doc>Removes the selection of checkbox identified by ``locator``.</doc>
+<msg timestamp="20231123 05:30:48.364" level="INFO">Unselecting checkbox 'id:Active'.</msg>
+<status status="PASS" starttime="20231123 05:30:48.364" endtime="20231123 05:30:51.106"/>
+</kw>
+<kw name="Select Checkbox" library="SeleniumLibrary">
+<arg>id:Categories</arg>
+<doc>Selects the checkbox identified by ``locator``.</doc>
+<msg timestamp="20231123 05:30:51.107" level="INFO">Selecting checkbox 'id:Categories'.</msg>
+<status status="PASS" starttime="20231123 05:30:51.107" endtime="20231123 05:30:58.933"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>//*[@id="categoryselector"]/div[2]/input[2]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231123 05:30:58.933" level="INFO">Clicking button '//*[@id="categoryselector"]/div[2]/input[2]'.</msg>
+<status status="PASS" starttime="20231123 05:30:58.933" endtime="20231123 05:31:00.666"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//*[@id="editor-navigation"]/input[2]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231123 05:31:00.667" level="INFO">Clicking element '//*[@id="editor-navigation"]/input[2]'.</msg>
+<status status="PASS" starttime="20231123 05:31:00.666" endtime="20231123 05:31:01.872"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//*[@id="SelectedStatus"]/option[3]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231123 05:31:01.873" level="INFO">Clicking element '//*[@id="SelectedStatus"]/option[3]'.</msg>
+<status status="PASS" starttime="20231123 05:31:01.872" endtime="20231123 05:31:03.096"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>id:applybutton</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231123 05:31:03.097" level="INFO">Clicking button 'id:applybutton'.</msg>
+<status status="PASS" starttime="20231123 05:31:03.096" endtime="20231123 05:31:04.787"/>
+</kw>
+<kw name="Table Should Contain" library="SeleniumLibrary">
+<arg>//*[@id="main"]/div/div[5]/form</arg>
+<arg>My new comment from RF</arg>
+<arg>loglevel=TRACE</arg>
+<doc>Verifies table contains text ``expected``.</doc>
+<status status="PASS" starttime="20231123 05:31:04.787" endtime="20231123 05:31:10.486"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20231123 05:31:10.486" endtime="20231123 05:31:11.683"/>
+</kw>
+<status status="PASS" starttime="20231123 05:30:26.534" endtime="20231123 05:31:11.683"/>
+</test>
+<status status="PASS" starttime="20231123 05:30:26.388" endtime="20231123 05:31:11.684"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Control 9">Control 9</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
